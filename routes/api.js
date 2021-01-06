@@ -1,28 +1,54 @@
-const express = require('express');
+const express = require("express");
 
 const router = express.Router();
 
+const NewInvestment = require("../models/newInvestment");
+
 // Routes
-router.get('/', (req, res) => {
 
-    BlogPost.find({  })
-        .then((data) => {
-            console.log('Data: ', data);
-            res.json(data);
-        })
-        .catch((error) => {
-            console.log('error: ', daerrorta);
-        });
+router.get("/new-investment", (req, res) => {
+  return test(req, res);
 });
 
-router.get('/name', (req, res) => {
-    const data =  {
-        username: 'peterson',
-        age: 5
-    };
-    res.json(data);
-});
-
-
+let test = async (req, res) => {
+  const data = {
+    id: "ryan15152019",
+    name: "ryan",
+    dob: "15-15-2019",
+    investment: "100000",
+    months: "3",
+  };
+  const Investment = new NewInvestment(data);
+  let { id } = data;
+  try {
+    let response = await NewInvestment.updateOne(
+      {
+        id,
+      },
+      {
+        $set: data,
+      },
+      {
+        upsert: true,
+        returnNewDocument: false,
+      }
+    );
+    let responseMessage = {};
+    console.log(response);
+    if (response && response.nModified && response.nModified != 0) {
+      responseMessage = {
+        msg:
+          "Record already exists! Existing entries are updated as per the last submitted form.",
+      };
+    } else {
+      responseMessage = {
+        msg: "Record Saved!",
+      };
+    }
+    return res.json(responseMessage);
+  } catch (error) {
+    console.error("New Investment inserion error : ", error);
+  }
+};
 
 module.exports = router;
