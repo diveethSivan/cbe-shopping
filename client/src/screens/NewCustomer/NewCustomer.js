@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { Button, Form, Input, SelectBox } from "../../components";
 import { Strings } from "../../constants";
+import { investmentService } from "../../services";
 import "./NewCustomer.scss";
 
 const NewCustomer = () => {
@@ -9,6 +10,18 @@ const NewCustomer = () => {
   const [investment, setInvestment] = useState("");
   const [months, setMonths] = useState("");
 
+  const addCustomer = () => {
+    if (name !== "" && dob !== "" && investment !== "" && months !== "") {
+      investmentService
+        .addCustomer(name, dob, investment, months)
+        .then((response) => {
+          alert(response.msg);
+        });
+    } else {
+      alert("Please fill all the fields!");
+    }
+  };
+
   return (
     <div className="new-customer-wrapper">
       <Form title="Add New Customer">
@@ -16,25 +29,29 @@ const NewCustomer = () => {
           label="Customer Name"
           value={name}
           handleChange={(event) => setName(event.target.value)}
+          required={true}
         />
         <Input
           label="Customer DOB"
           type="date"
           value={dob}
           handleChange={(event) => setDob(event.target.value)}
+          required={true}
         />
         <Input
           label="Investment"
           value={investment}
           handleChange={(event) => setInvestment(event.target.value)}
+          required={true}
         />
         <SelectBox
           data={Strings.APPLICATION.INVESTMENT.DURATION}
           labelText="Duration"
           value={months}
           handleChange={(value) => setMonths(value)}
+          required={true}
         />
-        <Button theme="light" text="Add" />
+        <Button theme="light" text="Add" handleClick={() => addCustomer()} />
       </Form>
     </div>
   );
