@@ -1,6 +1,6 @@
 import React from "react";
 import { BrowserRouter, Route, Switch } from "react-router-dom";
-import { Error, Home, NewCustomer } from "../screens";
+import { Error, Home, NewCustomer, ProfitSplit } from "../screens";
 import { Strings } from "../constants";
 
 const Routes = () => {
@@ -11,6 +11,10 @@ const Routes = () => {
         <Route
           path={Strings.APPLICATION.ROUTES.NEW_CUSTOMER}
           component={NewCustomer}
+        />
+        <Route
+          path={Strings.APPLICATION.ROUTES.PROFIT_SPLIT}
+          component={ProfitSplit}
         />
         <Route path={Strings.APPLICATION.ROUTES.ALL} component={Error} />
       </Switch>

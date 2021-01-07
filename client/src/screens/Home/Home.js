@@ -30,7 +30,7 @@ const Home = () => {
           value={dailyProfit}
           handleChange={(event) => setDailyProfit(event.target.value)}
         />
-        <Button theme="light" />
+        <Button theme="light" text="Next" />
       </Form>
     </div>
   );
