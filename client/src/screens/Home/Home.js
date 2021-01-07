@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import { Helmet } from 'react-helmet';
 import { Button, Form, Input } from "../../components";
 import "./Home.scss";
 
@@ -10,9 +9,6 @@ const Home = () => {
 
   return (
     <div className="home-screen-wrapper">
-      <Helmet>
-        <title>CBE Shopping | Daily Profits</title>
-      </Helmet>
       <Form title="Daily Profit">
         <Input
           label="UserId"
@@ -30,7 +26,7 @@ const Home = () => {
           value={dailyProfit}
           handleChange={(event) => setDailyProfit(event.target.value)}
         />
-        <Button theme="light" />
+        <Button theme="light" text="Next" />
       </Form>
     </div>
   );

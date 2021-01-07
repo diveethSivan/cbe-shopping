@@ -2,7 +2,7 @@ import React from "react";
 import PropTypes from "prop-types";
 import "./Input.scss";
 
-const Input = ({ handleChange, label, type, value, disabled }) => {
+const Input = ({ handleChange, label, handleBlur, type, value, disabled }) => {
   return (
     <div className="input-wrapper">
       <input
@@ -10,6 +10,7 @@ const Input = ({ handleChange, label, type, value, disabled }) => {
         value={value}
         onChange={handleChange}
         disabled={disabled}
+        onBlur={handleBlur}
       />
       <label>{label}</label>
     </div>
