@@ -1,6 +1,8 @@
 const Strings = {
   APPLICATION: {
-    END_POINTS: {},
+    END_POINTS: {
+      NEW_INVESTMENT: "new-investment",
+    },
     ROUTES: {
       ALL: "*",
       HOME: "/",
@@ -10,8 +12,8 @@ const Strings = {
     INVESTMENT: {
       DURATION: [
         {
-          NAME: "6 Months",
-          VALUE: "6",
+          NAME: "3 Months",
+          VALUE: "3",
         },
         {
           NAME: "6 Months",

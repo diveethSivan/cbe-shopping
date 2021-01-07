@@ -1,3 +1,3 @@
-import dailyService from "./dailyService";
+import investmentService from "./investmentService";
 
-export { dailyService };
+export { investmentService };
