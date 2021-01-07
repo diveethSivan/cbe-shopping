@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import { Helmet } from "react-helmet";
 import { Button, Form, Input } from "../../components";
 import "./ProfitSplit.scss";
 
@@ -21,9 +20,6 @@ const ProfitSplit = () => {
 
   return (
     <div className="profit-split-wrapper">
-      <Helmet>
-        <title>CBE Shopping | Profit Split</title>
-      </Helmet>
       <Form title="Profit Split Up">
         <Input
           label="Per Day Profit"
