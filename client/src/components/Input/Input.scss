@@ -16,6 +16,17 @@
       background: rgba(0, 0, 0, 0.1);
     }
   }
+  input[type="date"] {
+    &:in-range::-webkit-datetime-edit-year-field,
+    &:in-range::-webkit-datetime-edit-month-field,
+    &:in-range::-webkit-datetime-edit-day-field,
+    &:in-range::-webkit-datetime-edit-text {
+      visibility: hidden;
+    }
+    &::-webkit-calendar-picker-indicator {
+      filter: invert(100%);
+    }
+  }
   label {
     position: absolute;
     top: 0;

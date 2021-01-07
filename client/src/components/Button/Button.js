@@ -8,13 +8,13 @@ const Button = ({ handleClick, size, text, theme }) => {
     handleClick();
   };
   return (
-    <a className={`button-wrapper ${theme} ${size}`} href="#" onClick={_buttonClick}>
+    <div className={`button-wrapper ${theme} ${size}`} href="#" onClick={_buttonClick}>
       <span></span>
       <span></span>
       <span></span>
       <span></span>
       {text}
-    </a>
+    </div>
   );
 };
 

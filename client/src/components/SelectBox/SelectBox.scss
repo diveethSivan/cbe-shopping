@@ -1,0 +1,24 @@
+@import "../../constants/variables.scss";
+
+.select-box-wrapper {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  select.select-box {
+    width: 100%;
+    padding: 10px 0;
+    font-size: $medium;
+    color: #fff;
+    margin-bottom: 30px;
+    border: none;
+    border-bottom: 1px solid #fff;
+    outline: none;
+    background: transparent;
+    font-family: $font-rubik;
+    option{
+      color: $theme-blue;
+      background: transparent;
+      border-bottom: 1px solid #fff;
+    }
+  }
+}
