@@ -1,6 +1,6 @@
 import React from "react";
 import { BrowserRouter, Route, Switch } from "react-router-dom";
-import { Error, Home } from "../screens";
+import { Error, Home, NewCustomer } from "../screens";
 import { Strings } from "../constants";
 
 const Routes = () => {
@@ -8,6 +8,10 @@ const Routes = () => {
     <BrowserRouter>
       <Switch>
         <Route path={Strings.APPLICATION.ROUTES.HOME} exact component={Home} />
+        <Route
+          path={Strings.APPLICATION.ROUTES.NEW_CUSTOMER}
+          component={NewCustomer}
+        />
         <Route path={Strings.APPLICATION.ROUTES.ALL} component={Error} />
       </Switch>
     </BrowserRouter>
