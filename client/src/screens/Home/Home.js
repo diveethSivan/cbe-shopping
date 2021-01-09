@@ -4,7 +4,7 @@ import { investmentService } from "../../services";
 import "./Home.scss";
 
 const Home = () => {
-  const details = React.createRef(null);
+  const details = useRef(null);
   const [customerId, setCustomerId] = useState("");
   const [investment, setInvestment] = useState("0");
   const [dailyProfit, setDailyProfit] = useState("");
@@ -58,6 +58,8 @@ const Home = () => {
       .then((response) => {
         if (response) {
           alert("Data saved!");
+          setCustomerId("");
+          details.current.classList.add("hide");
         }
       })
       .catch((error) => {
