@@ -11,5 +11,8 @@ html {
     height: 100%;
     font-family: $font-rubik;
     background: $white;
+    .hide {
+      display: none !important;
+    }
   }
 }

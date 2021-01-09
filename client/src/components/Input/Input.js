@@ -6,6 +6,7 @@ const Input = ({
   handleChange,
   label,
   handleBlur,
+  handleKeyup,
   required,
   type,
   value,
@@ -20,6 +21,7 @@ const Input = ({
         disabled={disabled}
         onBlur={handleBlur}
         required={required}
+        onKeyUp={handleKeyup}
       />
       <label>{label}</label>
     </div>

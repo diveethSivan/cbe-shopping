@@ -10,12 +10,16 @@ const NewCustomer = () => {
   const [investment, setInvestment] = useState("");
   const [months, setMonths] = useState("");
 
+  //Add new customer to DB
   const addCustomer = () => {
     if (name !== "" && dob !== "" && investment !== "" && months !== "") {
       investmentService
         .addCustomer(name, dob, investment, months)
         .then((response) => {
           alert(response.msg);
+        })
+        .catch((error) => {
+          console.error("Exception while inserting customer : ", error);
         });
     } else {
       alert("Please fill all the fields!");

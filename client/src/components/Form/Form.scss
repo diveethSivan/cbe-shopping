@@ -7,12 +7,20 @@
   transform: translate(-50%, -50%);
   width: 50%;
   height: auto;
+  min-height: 75vh;
+  max-height: 75vh;
+  overflow-y: scroll;
   margin: 0 auto;
-  background: linear-gradient(#111, #1d3557);
+  background: radial-gradient(at top left,#111, #1d3557);
   box-sizing: border-box;
   box-shadow: 0 15px 25px rgba(0, 0, 0, 0.6);
   border-radius: 10px;
   padding: 2rem 4rem;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+  &::-webkit-scrollbar{
+    display: none;
+  }
   h2 {
     margin: 0 0 40px;
     padding: 0;
