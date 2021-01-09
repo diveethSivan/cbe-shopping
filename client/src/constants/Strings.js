@@ -2,12 +2,13 @@ const Strings = {
   APPLICATION: {
     END_POINTS: {
       NEW_INVESTMENT: "new-investment",
+      VALIDATE_CUSTOMERID: "/validate-customerid",
+      INSERT_DAILY_PROFIT: "/daily-profit"
     },
     ROUTES: {
       ALL: "*",
       HOME: "/",
       NEW_CUSTOMER: "/new-customer",
-      PROFIT_SPLIT: "/profit-split",
     },
     INVESTMENT: {
       DURATION: [
