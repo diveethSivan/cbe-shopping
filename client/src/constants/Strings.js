@@ -1,14 +1,28 @@
 const Strings = {
   APPLICATION: {
     END_POINTS: {
+      DETAILS: "/details",
+      INSERT_DAILY_PROFIT: "/daily-profit",
       NEW_INVESTMENT: "new-investment",
       VALIDATE_CUSTOMERID: "/validate-customerid",
-      INSERT_DAILY_PROFIT: "/daily-profit"
     },
     ROUTES: {
       ALL: "*",
+      DETAILS: "/details",
       HOME: "/",
       NEW_CUSTOMER: "/new-customer",
+    },
+    HEADER: {
+      NAV_MENU: [
+        {
+          TITLE: "New Investment",
+          URL: "/new-customer",
+        },
+        {
+          TITLE: "Details",
+          URL: "/details",
+        },
+      ],
     },
     INVESTMENT: {
       DURATION: [

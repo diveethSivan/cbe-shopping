@@ -1,9 +1,21 @@
 import Button from "./Button/Button";
 import Container from "./Container/Container";
+import DataTable from "./DataTable/DataTable";
 import Form from "./Form/Form";
+import Header from "./Shared/Header/Header";
 import Image from "./Image/Image";
 import Input from "./Input/Input";
 import Loader from "./Loader/Loader";
 import SelectBox from "./SelectBox/SelectBox";
 
-export { Button, Container, Form, Image, Input, Loader, SelectBox };
+export {
+  Button,
+  Container,
+  DataTable,
+  Form,
+  Header,
+  Image,
+  Input,
+  Loader,
+  SelectBox,
+};

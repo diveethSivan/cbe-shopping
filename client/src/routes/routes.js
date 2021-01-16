@@ -1,6 +1,6 @@
 import React from "react";
 import { BrowserRouter, Route, Switch } from "react-router-dom";
-import { Error, Home, NewCustomer } from "../screens";
+import { Details, Error, Home, NewCustomer } from "../screens";
 import { Strings } from "../constants";
 
 const Routes = () => {
@@ -12,6 +12,7 @@ const Routes = () => {
           path={Strings.APPLICATION.ROUTES.NEW_CUSTOMER}
           component={NewCustomer}
         />
+        <Route path={Strings.APPLICATION.ROUTES.DETAILS} component={Details} />
         <Route path={Strings.APPLICATION.ROUTES.ALL} component={Error} />
       </Switch>
     </BrowserRouter>

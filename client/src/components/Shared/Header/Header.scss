@@ -1,0 +1,35 @@
+@import "../../../constants/variables.scss";
+
+.header-wrapper {
+  position: fixed;
+  top: 0;
+  left: 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  padding: 0 3rem;
+  background-color: $theme-dark-grey;
+  z-index: 5;
+  .image-wrapper {
+    width: 70px;
+    height: 70px;
+    cursor: pointer;
+    .image {
+      height: 100%;
+    }
+  }
+  .nav-menu-wrapper {
+    a {
+      padding: 0 1rem;
+      text-decoration: none;
+      color: $theme-gold;
+      text-transform: uppercase;
+      font-size: $regular;
+      letter-spacing: 1px;
+      &:hover {
+        color: $white;
+      }
+    }
+  }
+}

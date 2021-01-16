@@ -1,5 +1,5 @@
 import React, { useRef, useState } from "react";
-import { Button, Form, Input } from "../../components";
+import { Button, Form, Header, Input } from "../../components";
 import { investmentService } from "../../services";
 import "./Home.scss";
 
@@ -69,6 +69,7 @@ const Home = () => {
 
   return (
     <div className="home-screen-wrapper">
+      <Header />
       <Form title="Daily Profit">
         <Input
           label="Customer Id"

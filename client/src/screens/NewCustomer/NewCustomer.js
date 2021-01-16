@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Button, Form, Input, SelectBox } from "../../components";
+import { Button, Form, Input, Header, SelectBox } from "../../components";
 import { Strings } from "../../constants";
 import { investmentService } from "../../services";
 import "./NewCustomer.scss";
@@ -28,7 +28,8 @@ const NewCustomer = () => {
 
   return (
     <div className="new-customer-wrapper">
-      <Form title="Add New Customer">
+      <Header />
+      <Form title="Add New Investment">
         <Input
           label="Customer Name"
           value={name}
