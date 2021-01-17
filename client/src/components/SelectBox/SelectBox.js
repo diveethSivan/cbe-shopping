@@ -3,7 +3,6 @@ import PropTypes from "prop-types";
 import "./SelectBox.scss";
 
 const SelectBox = ({ labelText, data, value, handleChange }) => {
-  console.log("SelectBox");
   const renderOptions = () => {
     let options = [];
     data &&

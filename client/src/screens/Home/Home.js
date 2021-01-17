@@ -1,10 +1,11 @@
 import React, { useRef, useState } from "react";
-import { Button, Form, Header, Input } from "../../components";
+import { Button, Form, Header, Input, Loader } from "../../components";
 import { investmentService } from "../../services";
 import "./Home.scss";
 
 const Home = () => {
   const details = useRef(null);
+  const loader = useRef(null);
   const [customerId, setCustomerId] = useState("");
   const [investment, setInvestment] = useState("0");
   const [dailyProfit, setDailyProfit] = useState("");
@@ -15,20 +16,22 @@ const Home = () => {
 
   //validate customerId
   const checkCustomerid = () => {
-    console.log("checkCustomerid called: ", details);
+    loader.current.classList.remove("hide");
     investmentService
       .validateCustomerid(customerId)
       .then((response) => {
         if (response && response.investment) {
-          console.log("details : ", details);
           setInvestment(response.investment);
           details.current.classList.remove("hide");
+          loader.current.classList.add("hide");
         } else {
           details.current.classList.add("hide");
+          loader.current.classList.add("hide");
           alert("CustomerId not found!!!");
         }
       })
       .catch((error) => {
+        loader.current.classList.add("hide");
         console.error("Exception while validating the CustomerId : ", error);
       });
   };
@@ -45,6 +48,7 @@ const Home = () => {
 
   //insert daily profit
   const insertDailyProfit = () => {
+    loader.current.classList.remove("hide");
     investmentService
       .addDailyProfit(
         customerId,
@@ -60,9 +64,11 @@ const Home = () => {
           alert("Data saved!");
           setCustomerId("");
           details.current.classList.add("hide");
+          loader.current.classList.add("hide");
         }
       })
       .catch((error) => {
+        loader.current.classList.add("hide");
         console.error("Exception while adding daily profit : ", error);
       });
   };
@@ -121,6 +127,9 @@ const Home = () => {
           <Button theme="light" handleClick={() => insertDailyProfit()} />
         </div>
       </Form>
+      <div ref={loader} className="loader-container hide">
+        <Loader />
+      </div>
     </div>
   );
 };

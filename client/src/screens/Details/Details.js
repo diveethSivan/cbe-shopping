@@ -1,25 +1,37 @@
-import React, { useState } from "react";
+import React, { useRef, useState } from "react";
 import { CSVLink } from "react-csv";
-import { Button, DataTable, Form, Header, Input } from "../../components";
+import {
+  Button,
+  DataTable,
+  Form,
+  Header,
+  Input,
+  Loader,
+} from "../../components";
 import { investmentService } from "../../services";
 import "./Details.scss";
 
 const Details = () => {
+  const loader = useRef();
   const [customerId, setCustomerid] = useState("");
   const [fromDate, setFromDate] = useState("");
   const [toDate, setToDate] = useState("");
   const [data, setData] = useState(null);
 
   const fetchDetails = () => {
+    loader.current.classList.remove("hide");
     investmentService
       .fetchDetails(customerId, fromDate, toDate)
       .then((response) => {
         if (response) {
           console.log(response);
           setData(response);
+          loader.current.classList.add("hide");
         }
       })
       .catch((error) => {
+        loader.current.classList.add("hide");
+        alert(error);
         console.error("Exception while fetching customer details : ", error);
       });
   };
@@ -106,6 +118,9 @@ const Details = () => {
           <DataTable columns={columns} data={data} />
         </div>
       ) : null}
+      <div ref={loader} className="loader-container hide">
+        <Loader />
+      </div>
     </div>
   );
 };
