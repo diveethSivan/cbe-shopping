@@ -35,7 +35,6 @@ exports.addCustomer = async (req, res) => {
       version.investment = data.investment;
       version.totalInvestment = totalInvestment;
       response.versions = [...response.versions, version];
-      console.log("response : ", response);
       await response.save();
       return res.json({
         msg: responseMsg,
@@ -47,7 +46,7 @@ exports.addCustomer = async (req, res) => {
       });
     }
   } catch (error) {
-    console.error("New Investment inserion error : ", error);
+    console.error("New Investment insertion error : ", error);
   }
 };
 
@@ -69,7 +68,7 @@ exports.validateCustomerId = async (req, res) => {
     });
     return res.json(response);
   } catch (error) {
-    console.error("New Investment inserion error : ", error);
+    console.error("CustomerId validation error : ", error);
   }
 };
 
@@ -89,6 +88,32 @@ exports.insertDailyProfit = async (req, res) => {
     let response = await DailyProfit.create(data);
     return res.json(response);
   } catch (error) {
-    console.error("New Investment inserion error : ", error);
+    console.error("Daily profit insertion error : ", error);
+  }
+};
+
+/**
+ *
+ * Fetch Customer Details
+ * @input id, fromDate, toDate
+ * @response details
+ *
+ * */
+exports.fetchDetails = async (req, res) => {
+  console.log("fetchDetails request : ", req.query);
+  const data = req.query;
+  const dailyProfit = new DailyProfit(data);
+  let { customerId, fromDate, toDate } = data;
+  try {
+    let response = await DailyProfit.find({
+      customerId,
+      timestamp: {
+        $gte: fromDate,
+        $lt: toDate,
+      },
+    });
+    return res.json(response);
+  } catch (error) {
+    console.error("Customer details fetching error : ", error);
   }
 };

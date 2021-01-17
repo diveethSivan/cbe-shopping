@@ -5,7 +5,7 @@ import "./Form.scss";
 const Form = ({ children, title }) => {
   return (
     <div className="form-wrapper">
-      <h2>{title}</h2>
+      <div className="form-title">{title}</div>
       <Container>{children}</Container>
     </div>
   );

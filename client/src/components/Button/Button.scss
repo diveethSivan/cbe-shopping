@@ -2,11 +2,13 @@
 
 @import "../../constants/variables.scss";
 
+$button-animation-duration: 4s;
+
 .button-wrapper {
   position: relative;
   display: inline-block;
   padding: 10px 20px;
-  color: $white;
+  color: $theme-gold;
   font-size: 16px;
   text-decoration: none;
   text-transform: uppercase;
@@ -16,8 +18,8 @@
   letter-spacing: 4px;
 
   &:hover {
-    background: $white;
-    color: $theme-blue;
+    background: $theme-gold;
+    color: $black;
   }
 
   span {
@@ -28,35 +30,35 @@
       left: -100%;
       width: 100%;
       height: 2px;
-      background: linear-gradient(90deg, transparent, $white);
-      animation: btn-anim1 1s linear infinite;
+      background: linear-gradient(90deg, transparent, $theme-gold);
+      animation: btn-anim1 $button-animation-duration linear infinite;
     }
     &:nth-child(2) {
       top: -100%;
       right: 0;
       width: 2px;
       height: 100%;
-      background: linear-gradient(180deg, transparent, $white);
-      animation: btn-anim2 1s linear infinite;
-      animation-delay: 0.25s;
+      background: linear-gradient(180deg, transparent, $theme-gold);
+      animation: btn-anim2 $button-animation-duration linear infinite;
+      animation-delay: 1s;
     }
     &:nth-child(3) {
       bottom: 0;
       right: -100%;
       width: 100%;
       height: 2px;
-      background: linear-gradient(270deg, transparent, $white);
-      animation: btn-anim3 1s linear infinite;
-      animation-delay: 0.5s;
+      background: linear-gradient(270deg, transparent, $theme-gold);
+      animation: btn-anim3 $button-animation-duration linear infinite;
+      animation-delay: 2s;
     }
     &:nth-child(4) {
       bottom: -100%;
       left: 0;
       width: 2px;
       height: 100%;
-      background: linear-gradient(360deg, transparent, $white);
-      animation: btn-anim4 1s linear infinite;
-      animation-delay: 0.75s;
+      background: linear-gradient(360deg, transparent, $theme-gold);
+      animation: btn-anim4 $button-animation-duration linear infinite;
+      animation-delay: 3s;
     }
   }
 }

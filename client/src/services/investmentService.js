@@ -42,7 +42,7 @@ export default class investmentService {
   };
 
   static addDailyProfit = async (
-    id,
+    customerId,
     investment,
     dailyProfit,
     gst,
@@ -55,7 +55,7 @@ export default class investmentService {
         Strings.APPLICATION.END_POINTS.INSERT_DAILY_PROFIT,
         {
           params: {
-            id,
+            customerId,
             investment,
             dailyProfit,
             gst,
@@ -69,6 +69,25 @@ export default class investmentService {
       return response.data;
     } catch (error) {
       console.log("Error - investmentService -> addDailyProfit : ", error);
+    }
+  };
+
+  static fetchDetails = async (customerId, fromDate, toDate) => {
+    try {
+      const response = await appAxios.get(
+        Strings.APPLICATION.END_POINTS.DETAILS,
+        {
+          params: {
+            customerId,
+            fromDate,
+            toDate,
+          },
+        }
+      );
+      console.log("fetchDetails response : ", response);
+      return response.data;
+    } catch (error) {
+      console.log("Error - investmentService -> fetchDetails : ", error);
     }
   };
 }

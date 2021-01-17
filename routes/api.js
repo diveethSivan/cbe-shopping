@@ -17,4 +17,8 @@ router.get("/daily-profit", (req, res) => {
   return newInvestment.insertDailyProfit(req, res);
 });
 
+router.get("/details", (req, res) => {
+  return newInvestment.fetchDetails(req, res);
+});
+
 module.exports = router;

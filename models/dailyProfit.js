@@ -4,7 +4,7 @@ mongoose.set("useFindAndModify", false);
 // Schema
 const Schema = mongoose.Schema;
 const DailyProfitSchema = new Schema({
-  id: String,
+  customerId: String,
   investment: String,
   dailyProfit: String,
   gst: String,
