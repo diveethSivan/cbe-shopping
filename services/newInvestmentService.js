@@ -3,7 +3,7 @@ const NewInvestment = require("../models/newInvestment");
 const DailyProfit = require("../models/dailyProfit");
 
 //Constants
-const TIMESTAMP_FORMAT = "YYYY-MM-DD, h:mm:ss a";
+const TIMESTAMP_FORMAT = "YYYY-MM-DD";
 
 /**
  *
@@ -16,7 +16,19 @@ exports.addCustomer = async (req, res) => {
   console.log("addCustomer request : ", req.query);
   const data = req.query;
   const Investment = new NewInvestment(data);
-  let { id } = data;
+  let { id, months } = data;
+  let version = {},
+    endDate = {};
+
+  //Set version Object
+  version.timestamp = moment().format(TIMESTAMP_FORMAT);
+  version.investment = data.investment;
+
+  //Set endDate object
+  endDate.timestamp = moment()
+    .add(parseInt(months), "months")
+    .format(TIMESTAMP_FORMAT);
+
   try {
     let response = await NewInvestment.findOne({
       id,
@@ -24,22 +36,33 @@ exports.addCustomer = async (req, res) => {
     if (response) {
       let totalInvestment =
         parseInt(data.investment) + parseInt(response.investment);
+
       let responseMsg =
         "Record already exists! Updated the investement amount from " +
         response.investment +
         " to " +
         totalInvestment;
       response.investment = totalInvestment + "";
-      let version = {};
-      version.timestamp = moment().format(TIMESTAMP_FORMAT);
-      version.investment = data.investment;
+
+      console.log(
+        "endDate : ",
+        moment().add(3, "months").format(TIMESTAMP_FORMAT)
+      );
+
       version.totalInvestment = totalInvestment;
+
+      //add it to response
       response.versions = [...response.versions, version];
+      response.endDate = [...response.endDate, endDate];
+
       await response.save();
       return res.json({
         msg: responseMsg,
       });
     } else {
+      version.totalInvestment = data.investment;
+      data.versions = [version];
+      data.endDate = [endDate];
       NewInvestment.create(data);
       return res.json({
         msg: "Record Saved!",
