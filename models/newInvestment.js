@@ -12,6 +12,7 @@ const NewInvestmentSchema = new Schema({
   versions: [
     { timestamp: String, investment: String, totalInvestment: String },
   ],
+  endDate: [{ timestamp: String }],
 });
 
 // Model

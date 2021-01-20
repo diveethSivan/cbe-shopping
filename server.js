@@ -3,6 +3,7 @@ const express = require("express");
 const mongoose = require("mongoose");
 const morgan = require("morgan");
 const path = require("path");
+const cronService = require("./schedulers/investmentDeadline");
 
 const app = express();
 const PORT = process.env.PORT || 8080; // Step 1
@@ -18,6 +19,8 @@ mongoose.connect(" mongodb://127.0.0.1:27017/cbe-shopping", {
 mongoose.connection.on("connected", () => {
   console.log("Mongoose is connected!!!!");
 });
+
+cronService.investmentDeadlineScheduler.start();
 
 // Data parsing
 app.use(express.json());
