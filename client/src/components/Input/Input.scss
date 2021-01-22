@@ -1,0 +1,58 @@
+@import "../../constants/variables.scss";
+
+.input-wrapper {
+  position: relative;
+  input {
+    width: 100%;
+    padding: 10px 0;
+    font-size: $medium;
+    color: #fff;
+    margin-bottom: 30px;
+    border: none;
+    border-bottom: 1px solid #fff;
+    outline: none;
+    background: transparent;
+    &:disabled {
+      background: rgba(0, 0, 0, 0.1);
+    }
+  }
+  input[type="date"] {
+    &:in-range::-webkit-datetime-edit-year-field,
+    &:in-range::-webkit-datetime-edit-month-field,
+    &:in-range::-webkit-datetime-edit-day-field,
+    &:in-range::-webkit-datetime-edit-text {
+      visibility: hidden;
+    }
+    &::-webkit-calendar-picker-indicator {
+      filter: invert(100%);
+    }
+  }
+  label {
+    position: absolute;
+    top: 0;
+    left: 0;
+    padding: 10px 0;
+    font-size: $medium;
+    color: $theme-gold;
+    pointer-events: none;
+    transition: 0.5s;
+  }
+  input:focus ~ label,
+  input:not([value=""]) ~ label,
+  input:disabled ~ label {
+    top: -20px;
+    left: 0;
+    font-size: $smaller;
+  }
+  .checkbox-wrapper {
+    display: flex;
+    align-items: center;
+    span {
+      color: $theme-gold;
+      input {
+        width: auto;
+        margin-left: 2rem;
+      }
+    }
+  }
+}

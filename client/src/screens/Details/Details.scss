@@ -1,0 +1,86 @@
+@import "../../constants/variables.scss";
+
+.details-wrapper {
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  .form-wrapper {
+    position: relative;
+    flex: 1 0 auto;
+    top: 70px;
+    left: 0;
+    transform: initial;
+    width: 100%;
+    height: auto;
+    min-height: 0;
+    overflow-y: hidden;
+    margin: 0;
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
+    .custom-container {
+      .filter-section {
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+        .input-wrapper {
+          width: 30%;
+        }
+      }
+      .button-wrapper {
+        margin-top: 1rem;
+      }
+    }
+  }
+  .customer-details {
+    padding: 0 4rem;
+    margin: 4rem 0;
+    .download-wrapper {
+      padding: 2rem 0;
+      text-align: right;
+      a {
+        color: $theme-gold;
+        text-decoration: none;
+        &:hover {
+          color: $white;
+        }
+      }
+    }
+    .data-table-wrapper {
+      .rdt_TableHeader {
+        background-color: transparent;
+        color: $theme-gold;
+      }
+      .rdt_Table {
+        background-color: $black;
+        color: $white;
+        .rdt_TableHead {
+          .rdt_TableHeadRow {
+            .rdt_TableCol,
+            .rdt_TableCol_Sortable {
+              background-color: $black;
+              color: $theme-gold !important;
+            }
+          }
+        }
+        .rdt_TableBody {
+          .rdt_TableRow {
+            .rdt_TableCell {
+              background-color: $black;
+              color: $white;
+            }
+          }
+        }
+      }
+      .rdt_Pagination {
+        background-color: $black;
+        color: $theme-gold;
+        button {
+          background-color: transparent;
+          color: $theme-gold;
+          fill: $theme-gold;
+        }
+      }
+    }
+  }
+}

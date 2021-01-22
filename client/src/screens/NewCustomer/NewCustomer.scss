@@ -1,0 +1,8 @@
+.new-customer-wrapper{
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    .form-wrapper{
+        flex: 1 0 auto;
+    }
+}

@@ -1,0 +1,15 @@
+.home-screen-wrapper {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  .form-wrapper {
+    flex: 1 0 auto;
+    .customer-details {
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+  }
+}
