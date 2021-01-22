@@ -1,4 +1,5 @@
 // Import npm packages
+const cors = require("cors");
 const express = require("express");
 const mongoose = require("mongoose");
 const morgan = require("morgan");
@@ -21,6 +22,9 @@ mongoose.connection.on("connected", () => {
 });
 
 cronService.investmentDeadlineScheduler.start();
+
+//Enable cors
+app.use(cors());
 
 // Data parsing
 app.use(express.json());

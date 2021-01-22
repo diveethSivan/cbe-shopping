@@ -29,8 +29,8 @@ let transporter = nodemailer.createTransport({
 
 let investmentDeadlineScheduler = cron.schedule(cronExpression, async () => {
   let deadlines = await investmentDeadlineService.fetchDeadines(
-    moment().add({ days: 1, months: 3 }).format(TIMESTAMP_FORMAT),
-    moment().add({ days: 2, months: 3 }).format(TIMESTAMP_FORMAT)
+    moment().format(TIMESTAMP_FORMAT),
+    moment().add({ days: 2 }).format(TIMESTAMP_FORMAT)
   );
   console.log(deadlines);
   deadlines.forEach((item, index) => {

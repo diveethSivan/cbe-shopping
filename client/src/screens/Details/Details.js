@@ -3,6 +3,7 @@ import { CSVLink } from "react-csv";
 import {
   Button,
   DataTable,
+  Footer,
   Form,
   Header,
   Input,
@@ -118,6 +119,7 @@ const Details = () => {
           <DataTable columns={columns} data={data} />
         </div>
       ) : null}
+      <Footer />
       <div ref={loader} className="loader-container hide">
         <Loader />
       </div>

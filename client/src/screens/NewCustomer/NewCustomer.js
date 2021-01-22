@@ -1,6 +1,7 @@
 import React, { useRef, useState } from "react";
 import {
   Button,
+  Footer,
   Form,
   Input,
   Header,
@@ -49,7 +50,7 @@ const NewCustomer = () => {
           required={true}
         />
         <Input
-          label="Customer DOB"
+          label="Customer DOB (YYYY-MM-DD)"
           type="date"
           value={dob}
           handleChange={(event) => setDob(event.target.value)}
@@ -70,6 +71,7 @@ const NewCustomer = () => {
         />
         <Button theme="light" text="Add" handleClick={() => addCustomer()} />
       </Form>
+      <Footer />
       <div ref={loader} className="loader-container hide">
         <Loader />
       </div>

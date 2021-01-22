@@ -44,4 +44,15 @@
     left: 0;
     font-size: $smaller;
   }
+  .checkbox-wrapper {
+    display: flex;
+    align-items: center;
+    span {
+      color: $theme-gold;
+      input {
+        width: auto;
+        margin-left: 2rem;
+      }
+    }
+  }
 }

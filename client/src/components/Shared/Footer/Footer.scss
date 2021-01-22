@@ -1,0 +1,42 @@
+@import "../../../constants/variables.scss";
+
+.footer-wrapper {
+  position: relative;
+  padding: 6rem 3rem 2rem;
+  flex-shrink: 0;
+  min-height: 60px;
+  background: transparent;
+  display: flex;
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+  color: $theme-gold;
+  .quote {
+    font-size: $medium;
+    color: $theme-gold;
+    text-shadow: 2px 2px 2px $black;
+    -webkit-mask-image: linear-gradient(
+      -75deg,
+      rgba(0, 0, 0, 0.6) 30%,
+      #000 50%,
+      rgba(0, 0, 0, 0.6) 70%
+    );
+    -webkit-mask-size: 200%;
+    animation: shine 2s linear infinite;
+  }
+  .gst-number {
+    position: absolute;
+    bottom: 10px;
+    right: 10px;
+    font-size: $smaller;
+  }
+}
+
+@keyframes shine {
+  from {
+    -webkit-mask-position: 150%;
+  }
+  to {
+    -webkit-mask-position: -50%;
+  }
+}

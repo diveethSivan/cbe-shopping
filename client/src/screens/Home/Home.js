@@ -1,5 +1,5 @@
 import React, { useRef, useState } from "react";
-import { Button, Form, Header, Input, Loader } from "../../components";
+import { Button, Footer, Form, Header, Input, Loader } from "../../components";
 import { investmentService } from "../../services";
 import "./Home.scss";
 
@@ -13,6 +13,7 @@ const Home = () => {
   const [gstProfit, setGstProfit] = useState("");
   const [investorProfit, setInvestorProfit] = useState("");
   const [ourProfit, setOurProfit] = useState("");
+  const [holiday, setHoliday] = useState(false);
 
   //validate customerId
   const checkCustomerid = () => {
@@ -49,28 +50,45 @@ const Home = () => {
   //insert daily profit
   const insertDailyProfit = () => {
     loader.current.classList.remove("hide");
-    investmentService
-      .addDailyProfit(
-        customerId,
-        investment,
-        dailyProfit,
-        gst,
-        gstProfit,
-        investorProfit,
-        ourProfit
-      )
-      .then((response) => {
-        if (response) {
-          alert("Data saved!");
-          setCustomerId("");
-          details.current.classList.add("hide");
+    if (holiday) {
+      investmentService
+        .addDailyProfit(customerId, investment, "-", "-", "-", "-", "-")
+        .then((response) => {
+          if (response) {
+            alert("Data saved!");
+            setCustomerId("");
+            details.current.classList.add("hide");
+            loader.current.classList.add("hide");
+          }
+        })
+        .catch((error) => {
           loader.current.classList.add("hide");
-        }
-      })
-      .catch((error) => {
-        loader.current.classList.add("hide");
-        console.error("Exception while adding daily profit : ", error);
-      });
+          console.error("Exception while adding daily profit : ", error);
+        });
+    } else {
+      investmentService
+        .addDailyProfit(
+          customerId,
+          investment,
+          dailyProfit,
+          gst,
+          gstProfit,
+          investorProfit,
+          ourProfit
+        )
+        .then((response) => {
+          if (response) {
+            alert("Data saved!");
+            setCustomerId("");
+            details.current.classList.add("hide");
+            loader.current.classList.add("hide");
+          }
+        })
+        .catch((error) => {
+          loader.current.classList.add("hide");
+          console.error("Exception while adding daily profit : ", error);
+        });
+    }
   };
 
   return (
@@ -124,9 +142,16 @@ const Home = () => {
             value={ourProfit}
             handleChange={(event) => setOurProfit(event.target.value)}
           />
+          <Input
+            type="checkbox"
+            label="Holiday"
+            value={holiday}
+            handleChange={(event) => setHoliday(event.target.checked)}
+          />
           <Button theme="light" handleClick={() => insertDailyProfit()} />
         </div>
       </Form>
+      <Footer />
       <div ref={loader} className="loader-container hide">
         <Loader />
       </div>

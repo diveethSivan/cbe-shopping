@@ -1,8 +1,13 @@
 @import "../../constants/variables.scss";
 
 .details-wrapper {
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
   .form-wrapper {
     position: relative;
+    flex: 1 0 auto;
     top: 70px;
     left: 0;
     transform: initial;
@@ -51,7 +56,8 @@
         color: $white;
         .rdt_TableHead {
           .rdt_TableHeadRow {
-            .rdt_TableCol, .rdt_TableCol_Sortable {
+            .rdt_TableCol,
+            .rdt_TableCol_Sortable {
               background-color: $black;
               color: $theme-gold !important;
             }
